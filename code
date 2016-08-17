@@ -1,0 +1,84 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace Name_Search
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // Open the boys text file.
+        StreamReader inputFile = File.OpenText("BoyNames.txt");
+        List<string> boyList = new List<string>();
+
+        // Open the girls text file.
+        StreamReader inputFile2 = File.OpenText("GirlNames.txt");
+        List<string> girlList = new List<string>();
+
+      
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            // Read the boy's list.
+            while (!inputFile.EndOfStream)
+            {
+                boyList.Add(inputFile.ReadLine());
+            }
+
+            // Read the girl's list.
+            while (!inputFile.EndOfStream)
+            {
+                girlList.Add(inputFile2.ReadLine());
+            }
+
+
+            // Search for name entered into the list.
+            int position = boyList.IndexOf(nameTextBox.Text);
+            int position2 = girlList.IndexOf(nameTextBox.Text);
+
+
+            if (position != -1)
+            {
+                MessageBox.Show("The name you entered is among the most popular names.");
+            }
+            else if (position2 != -1)
+            {
+                MessageBox.Show("The name you entered is among the most popular names.");
+            }
+            else
+            {
+                MessageBox.Show("The name you have entered isn't among the most popular names.");
+            }
+        }
+
+            
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            // Close the form.
+            this.Close();
+        }
+    
+
+
+
+
+
+
+        }
+
+
+
+      
+    }
